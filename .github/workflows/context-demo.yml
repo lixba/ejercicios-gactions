@@ -1,0 +1,21 @@
+name: Context demo
+
+on:
+  push:
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: "Context Demo Job"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Contexto de Github
+        run: |
+          echo "Repositorio: ${{ github.repository }}"
+          echo "Rama: ${{ github.ref_name }}"
+          echo "Commit: ${{ github.sha }}"
+          echo "Actor: ${{ github.actor }}"
+          echo "Evento: ${{ github.event_name }}"
+
