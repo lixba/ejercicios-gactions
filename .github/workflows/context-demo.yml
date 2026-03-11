@@ -19,3 +19,8 @@ jobs:
           echo "Actor: ${{ github.actor }}"
           echo "Evento: ${{ github.event_name }}"
 
+      - name: Context runner 
+        run: |
+          echo "Sistema operativo del runner: ${{ runner.os }}"
+          echo "Directorio: ${{ runner.temp }}"
+
