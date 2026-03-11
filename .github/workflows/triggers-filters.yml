@@ -1,0 +1,33 @@
+name: Triggers Filteres demo
+
+on:
+  push:
+    branches: ["main", "release/**"] # cualquier rama que empiece con release
+    paths:
+      - "src/**" # solo si cambia algo dentro de src
+      - "test/**" # solo si cambia algo dentro de test
+
+  pull_request:
+    branches:
+      - main
+      - release/**
+    paths:
+      - "src/**" # solo si cambia algo dentro de src
+      - "test/**" # solo si cambia algo dentro de test
+
+permissions: 
+  contents: read
+  
+jobs:
+  build-filtrado:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Confirmar que el trigger pasó los filtros
+        run: |
+          echo "Branch ${{ github.ref_name }}"
+          echo "Branch ${{ github.event_name }}"
+          echo "Branch ${{ github.sha }}"
+
